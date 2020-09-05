@@ -10,12 +10,17 @@
     ],
     "keywords": [
         "Laravel",
-        "Tessa"
+        "Tessa",
+        "Tessa Laravel",
+        "Tailwindcss",
+        "Livewire",
+        "Alpine.js"
     ],
     "require": {
         "laravel/framework": "^7.0|^6.0",
         "creativeorange/gravatar": "~1.0",
-        "guzzlehttp/guzzle": "^7.0|^6.3"
+        "guzzlehttp/guzzle": "^7.0|^6.3",
+        "livewire/livewire": "^1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
