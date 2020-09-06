@@ -9,6 +9,9 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <php>
+        <env name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="true" />
+    </php>
     <testsuites>
         <testsuite name="Tessa Admin">
             <directory suffix=".php">./tests/</directory>

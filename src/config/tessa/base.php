@@ -28,18 +28,20 @@ return [
     // CSS files that are loaded in all pages, using Laravel's asset() helper
     'styles' => [
 
+
+        'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css'
     ],
 
     // JS files that are loaded in all pages, using Laravel's asset() helper
     'scripts' => [
 
+        'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js'
     ],
 
     // Choose whether new users/admins are allowed to register
-    'registration_open' => env('BACKPACK_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
+    'registration_open' => env('TESSA_REGISTRATION_OPEN', env('APP_ENV') === 'local'),
 
     // The route prefix
     'route_prefix' => 'admin',
-
 
 ];
