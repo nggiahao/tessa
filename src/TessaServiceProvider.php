@@ -2,7 +2,9 @@
 
 namespace Nggiahao\Tessa;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Nggiahao\Tessa\app\Http\Middleware\Authenticate;
 
 class TessaServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,8 @@ class TessaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadConfigs();
+        $this->pushMiddleware();
         $this->setupRoutes();
         $this->publishFiles();
     }
@@ -29,7 +33,6 @@ class TessaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadViews();
-        $this->loadConfigs();
         $this->loadHelpers();
     }
 
@@ -46,14 +49,50 @@ class TessaServiceProvider extends ServiceProvider
         // use the vendor configuration file as fallback
         $this->mergeConfigFrom(__DIR__.'/config/tessa/base.php', 'tessa.base');
         $this->mergeConfigFrom(__DIR__.'/config/tessa/crud.php', 'tessa.crud');
+
+        app()->config['auth.providers'] = app()->config['auth.providers'] +
+            [
+                'admin' => [
+                    'driver'  => 'eloquent',
+                    'model'   => App\User::class,
+                ],
+            ];
+
+        // add the backpack_users password broker to the configuration
+        app()->config['auth.passwords'] = app()->config['auth.passwords'] +
+            [
+                'admin' => [
+                    'provider'  => 'admin',
+                    'table'     => 'password_resets',
+                    'expire'    => 240,
+                ],
+            ];
+
+        // add the backpack_users guard to the configuration
+        app()->config['auth.guards'] = app()->config['auth.guards'] +
+            [
+                'admin' => [
+                    'driver'   => 'session',
+                    'provider' => 'admin',
+                ],
+            ];
     }
 
     public function publishFiles()
     {
         $tessa_config = [__DIR__.'/config' => config_path()];
 
+        $tessa_public = [__DIR__.'/public' => public_path()];
 
         $this->publishes($tessa_config, 'config');
+        $this->publishes($tessa_public, 'public');
+    }
+
+
+    public function pushMiddleware()
+    {
+        $router = $this->app->make(Router::class);
+        $router->pushMiddlewareToGroup('auth.admin', Authenticate::class);
     }
 
     /**
@@ -83,7 +122,6 @@ class TessaServiceProvider extends ServiceProvider
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views/base'), 'tessa');
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views/crud'), 'crud');
     }
-
     /**
      * Get the services provided by the provider.
      *

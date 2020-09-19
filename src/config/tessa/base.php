@@ -27,15 +27,18 @@ return [
 
     // CSS files that are loaded in all pages, using Laravel's asset() helper
     'styles' => [
+        '/packages/tessa/css/app.min.css',
+        //'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css'
 
-
-        'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css'
+        //Theme
+        '/packages/tessa/css/themes/light.min.css'
     ],
 
     // JS files that are loaded in all pages, using Laravel's asset() helper
     'scripts' => [
+        '/packages/tessa/js/app.min.js',
 
-        'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js'
+        //'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js'
     ],
 
     // Choose whether new users/admins are allowed to register

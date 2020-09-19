@@ -1,40 +1,40 @@
 @extends(tessa_view('layouts.app'))
 
-@section('content')
-    <section class="p-6 md:p-8 mt-24 flex flex-col items-center">
-        <p class="text-3xl">
-            REGISTER
-        </p>
-
-        <div class="bg-gray-200 w-full max-w-lg shadow-lg rounded-lg mt-2 px-4 md:px-8 pt-6">
-            <form method="POST" class="text-sm">
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block text-sm font-light uppercase tracking-wider mb-2" for="name">Name</label>
-                        <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white text-gray-500 leading-tight focus:outline-none focus:shadow-outline" name="name" type="text" placeholder="Email" value="John Doe">
-                    </div>
-                    <div class="w-full md:w-1/2 px-3">
-                        <label class="block text-sm font-light uppercase tracking-wider mb-2" for="email">Email</label>
-                        <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white text-gray-500 leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="Email" value="admin@example.com">
-                    </div>
+@section('main')
+    <div class="flex flex-col flex-auto justify-center items-center">
+        <div class="text-center w-full max-w-full md:max-w-md p-6 overflow-hidden relative">
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-2">Register</h3>
+                <p class="opacity-75 text-sm">Enter your details to create your account:</p>
+            </div>
+            <form method="POST" action="{{route('tessa.auth.register')}}" class="mb-6">
+                @csrf
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="text" placeholder="Name" name="name" required>
                 </div>
-
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block text-sm font-light uppercase tracking-wider mb-2" for="password">Password</label>
-                        <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white text-gray-500 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="Password" value="password123">
-                    </div>
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block text-sm font-light uppercase tracking-wider mb-2" for="password">Password Confirmation</label>
-                        <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white text-gray-500 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" type="password" placeholder="Password Confirmation" value="password123">
-                    </div>
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="text" placeholder="Email" name="email" required>
                 </div>
-
-                <div class="flex items-center justify-between my-6">
-                    <button class="bg-blue-500 text-white font-light py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline" type="submit">Register</button>
-                    <a class="inline-block align-baseline font-light text-right text-sm text-gray-500 hover:text-gray-600" href="https://starter.lartisan.dev/login">Already have an account? Login!</a>
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="password" placeholder="Confirm Password" name="password_confirmation" required>
+                </div>
+                <div class="mb-6">
+                    <button type="submit" class="text-center border text-white rounded-lg bg-primary px-8 py-4">Register
+                    </button>
                 </div>
             </form>
+            <div>
+                <a href="{{url('admin/password/reset')}}" class="hover:font-bold hover:text-primary">Forget Password?</a>
+                /
+                <a href="{{url('admin/login')}}" class="hover:font-bold hover:text-primary">Login</a>
+            </div>
         </div>
-    </section>
+    </div>
 @endsection

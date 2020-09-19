@@ -4,13 +4,13 @@
     @include(tessa_view('inc.head'))
     <livewire:styles />
 </head>
-<body class="bg-gray-100 font-mono flex flex-col min-h-screen md:flex-row">
+<body class="text-default bg-main-background overflow-hidden relative flex flex-col h-screen">
 
 @yield('header')
 
-<div class="relative w-full">
-    @yield('content')
-</div>
+@yield('main')
+
+@yield('footer')
 
 @yield('before_scripts')
 @stack('before_scripts')

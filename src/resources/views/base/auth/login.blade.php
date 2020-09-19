@@ -1,33 +1,40 @@
 @extends(tessa_view('layouts.app'))
 
-@section('content')
-    <section class="p-6 md:p-8 mt-24 flex flex-col items-center">
-        <p class="text-3xl">
-            LOGIN
-        </p>
-
-        <div class="bg-gray-200 w-full max-w-lg shadow-lg rounded-lg mt-2 px-4 md:px-8 pt-6">
-            <form action="{{route('tessa.auth.login')}}" method="POST" class="text-sm">
-                {!! csrf_field() !!}
-                <div class="mb-4">
-                    <label class="block text-sm font-light uppercase tracking-wider mb-2" for="email">Email</label>
-                    <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="Email">
-                </div>
-
+@section('main')
+    <div class="flex flex-col flex-auto justify-center items-center">
+        <div class="text-center w-full max-w-full md:max-w-md p-6 overflow-hidden relative">
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-2">Login To Admin</h3>
+                <p class="opacity-75 text-sm">Enter your details to login to your account:</p>
+            </div>
+            <form method="POST" action="{{route('tessa.auth.login')}}" class="mb-6">
+                @csrf
                 <div class="mb-6">
-                    <label class="block text-sm font-light uppercase tracking-wider mb-2" for="password">Password</label>
-                    <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="Password">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="text" placeholder="Email" name="email" required>
                 </div>
-
-                <div class="flex items-center justify-between">
-                    <button class="bg-blue-500 text-white font-light py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline" type="submit">Sign In</button>
-                    <a class="inline-block align-baseline font-light text-right text-sm" href="#">Forgot Password?</a>
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="password" placeholder="Password" name="password" required>
                 </div>
-
-                <div class="my-6">
-                    <a class="inline-block align-baseline font-light text-sm" href="https://starter.lartisan.dev/register">Don't have an account? Create one now!</a>
+                <div class="flex mb-6">
+                    <label class="w-1/2 text-left">
+                        <input class="form-checkbox border-gray-500" type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <div class="w-1/2 text-right">
+                        <a href="{{url('admin/password/reset')}}" class="text-right hover:font-bold hover:text-primary">Forget Password?</a>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <button type="submit" class="text-center border text-white rounded-lg bg-primary px-8 py-4">Login
+                    </button>
                 </div>
             </form>
+            <div>
+                <span class="mr-3">Don't have an account yet?</span>
+                <a href="{{url('admin/register')}}" class="text-right hover:font-bold hover:text-primary">Register</a>
+            </div>
         </div>
-    </section>
+    </div>
 @endsection

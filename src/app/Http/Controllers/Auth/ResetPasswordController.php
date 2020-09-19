@@ -11,6 +11,13 @@ class ResetPasswordController extends Controller
     use ResetsPasswords;
 
     /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/admin';
+
+    /**
      * Display the password reset view for the given token.
      *
      * If no token is present, display the link request form.

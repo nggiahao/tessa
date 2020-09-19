@@ -1,24 +1,29 @@
 @extends(tessa_view('layouts.app'))
 
-@section('content')
-    <section class="p-6 md:p-8 mt-24 flex flex-col items-center">
-        <p class="text-3xl">
-            RESET PASSWORD
-        </p>
-
-        <div class="bg-gray-200 w-full max-w-lg shadow-lg rounded-lg mt-2 px-4 md:px-8 pt-6">
-            <form method="POST" class="text-sm">
-                <div class="mb-4">
-                    <label class="block text-sm font-light uppercase tracking-wider mb-2" for="email">E-mail address</label>
-                    <input class="shadow appearance-none border border-gray-200 rounded w-full py-2 px-3 bg-white leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="Email">
+@section('main')
+    <div class="flex flex-col flex-auto justify-center items-center">
+        <div class="text-center w-full max-w-full md:max-w-md p-6 overflow-hidden relative">
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-2">Forgotten Password ?</h3>
+                <p class="opacity-75 text-sm">Enter your email to reset your password:</p>
+            </div>
+            <form method="POST" action="{{route('tessa.auth.login')}}" class="mb-6">
+                @csrf
+                <div class="mb-6">
+                    <input class="bg-gray-200 border-gray-200 leading-4 shadow-none outline-none block w-full px-8 py-4"
+                           type="text" placeholder="Email" name="email" required>
                 </div>
 
-                <div class="flex items-center justify-between">
-                    <button class="bg-blue-500 text-white font-light py-2 px-4 rounded shadow-lg focus:outline-none focus:shadow-outline" type="submit">
-                        Send Password Reset Link
+                <div class="mb-6">
+                    <button type="submit" class="text-center border text-white rounded-lg bg-primary px-8 py-4">Request
                     </button>
                 </div>
             </form>
+            <div>
+                <a href="{{url('admin/register')}}" class="hover:font-bold hover:text-primary">Register</a>
+                /
+                <a href="{{url('admin/login')}}" class="hover:font-bold hover:text-primary">Login</a>
+            </div>
         </div>
-    </section>
+    </div>
 @endsection
