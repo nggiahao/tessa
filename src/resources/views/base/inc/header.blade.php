@@ -1,30 +1,38 @@
-<div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-4 border-b border-gray-300">
-
-    <div class="flex-none w-56 flex flex-row items-center">
-        <a class="capitalize ml-1 flex-1 text-2xl" href="">
-            {!!config('tessa.base.project_logo')!!}
-        </a>
-
-        <button class="flex-none text-right text-gray-900 p-1">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="menu-alt1 w-6 h-6"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-        </button>
-    </div>
-    <div class="flex flex-row-reverse items-center ml-auto">
-
-        <div class="dropdown relative md:static">
-
-            <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
-                <div class="w-8 h-8 overflow-hidden rounded-full">
-                    <img class="w-full h-full object-cover" src="https://placehold.co/120x120/00a65a/ffffff&text=H">
-                </div>
-
-                <div class="ml-2 capitalize flex hidden md:block">
-                    <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">Gia Hao</h1>
-                </div>
-            </button>
+<div class="ml-0 w-full fixed top-0 z-10 flex items-center bg-white" style="box-shadow: 0 0 20px rgba(89,102,122,0.1);">
+    <div class="w-full px-5 py-4 flex justify-between">
+        <div class="flex items-center justify-between hidden md:flex md:z-10" style="width: calc(280px - 2.5rem)">
+            <a href="{{url('/admin')}}" class="text-2xl leading-4">
+                {!! config('tessa.base.project_logo') !!}
+            </a>
+            <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         </div>
-
-
+        <div class="mr-4 pr-3 border-r md:hidden flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </div>
+        <div class="flex flex-wrap justify-end relative" x-data="{ open: false }">
+            <div class="flex w-full justify-end cursor-pointer" @click="open = !open">
+                <img class="w-10 h-10 rounded-md" src="http://admin.pixelstrap.com/cuba/assets/images/dashboard/profile.jpg">
+                <div class="ml-4 hidden md:block">
+                    <p class="font-bold">Gia Hao</p>
+                    <p class="text-xs opacity-75">Admin</p>
+                </div>
+            </div>
+            <ul x-show="open" @click.away="open = false" class="justify-end w-40 p-3 absolute bg-white rounded-md" style="display: none; right: 0; top: 55px">
+                <li class="py-3"><a class="" href="#" title="Account">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>Account </span>
+                    </a></li>
+                <hr>
+                <li class="py-3"><a class="" href="#" onclick="
+                        event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                        <span>Log out</span>
+                    </a>
+                    <form id="logout-form" action="{{url('admin/logout')}}" method="POST" class="hidden">
+                        @csrf
+                    </form></li>
+            </ul>
+        </div>
     </div>
-
 </div>

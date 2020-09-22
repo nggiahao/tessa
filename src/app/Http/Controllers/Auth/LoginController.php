@@ -6,6 +6,7 @@ namespace Nggiahao\Tessa\app\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -29,6 +30,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/admin';
 
+    protected $redirectAfterLogout = '/admin/login';
+
     /**
      * Create a new controller instance.
      *
@@ -42,5 +45,14 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view(tessa_view('auth.login'));
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard() {
+        return Auth::guard('admin');
     }
 }

@@ -26,7 +26,7 @@
                            type="password" placeholder="Confirm Password" name="password_confirmation" required>
                 </div>
                 <div class="mb-6">
-                    <button type="submit" class="text-center border text-white rounded-lg bg-primary px-8 py-4">Register
+                    <button type="submit" class="text-center leading-4 text-white rounded-large bg-gradient-primary px-8 py-4">Register
                     </button>
                 </div>
             </form>

@@ -54,7 +54,7 @@ class TessaServiceProvider extends ServiceProvider
             [
                 'admin' => [
                     'driver'  => 'eloquent',
-                    'model'   => App\User::class,
+                    'model'   => \App\User::class,
                 ],
             ];
 

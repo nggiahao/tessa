@@ -25,13 +25,6 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        $this->authenticate($request);
-
-        return $next($request);
-    }
-
-    protected function authenticate(Request $request)
-    {
         if (Auth::guard('admin')->guest()) {
             return $this->unauthenticated($request);
         }
@@ -39,14 +32,16 @@ class Authenticate
         if (! $this->checkIfUserIsAdmin(Auth::guard('admin')->user())) {
             return $this->unauthenticated($request);
         }
+
+        return $next($request);
     }
 
     protected function unauthenticated(Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {
-            return response('', 401);
+            return response('Unauthorized.', 401);
         } else {
-            return redirect()->guest(url('admin/login'));
+            return redirect(url('/admin/login'));
         }
     }
 }

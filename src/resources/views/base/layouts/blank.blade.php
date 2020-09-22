@@ -4,7 +4,7 @@
     @include(tessa_view('inc.header'))
 @endsection
 
-@section('container')
+@section('main')
     @include(tessa_view('inc.sidebar'))
 
     <main class="relative">

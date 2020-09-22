@@ -13,7 +13,7 @@ return [
     'project_name' => 'Tessa Admin Panel',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<b>Tes</b>sa',
+    'project_logo'   => "<img class='inline-block mr-2' src='".url('/logo_tessa.png')."'><span class='font-black'>Tessa</span>",
 
     // When clicking on the admin panel's top-left logo/name,
     // where should the user be redirected?
