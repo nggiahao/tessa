@@ -1,5 +1,5 @@
-<div class="fixed bg-white" style="width: 280px">
-    <nav class="pt-24 h-screen overflow-auto" style="box-shadow: 0 0 21px 0 rgba(89,102,122,0.1);">
+<div class="bg-white" style="width: 280px">
+    <nav class="pt-6 h-screen overflow-auto" style="box-shadow: 0 0 21px 0 rgba(89,102,122,0.1);">
         <ul class="px-5 leading-4">
             <li class="block relative mb-2">
                 <a class="font-medium block rounded-large py-3 px-4 text-white bg-gradient-primary" href="{{route('tessa.dashboard')}}">
@@ -15,7 +15,7 @@
                     <svg class="w-3 h-3 absolute hidden" style="top: 50%; right: 1.25rem; margin-top: -4px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </a>
                 <ul class="pl-8">
-                    <li><a class="block rounded-large py-2 pr-4 hover:text-primary" href="#">
+                    <li><a class="block rounded-large py-2 pr-4 hover:text-primary" href="{{route('tessa.user')}}">
                             <svg class="inline w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                             <span class="align-bottom">User</span>
                         </a></li>

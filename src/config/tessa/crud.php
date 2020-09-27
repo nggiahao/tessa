@@ -8,4 +8,13 @@ return [
     |
     |
     */
+
+    // --------------------------
+    // Default operation settings
+    // --------------------------
+    'operations' => [
+        'list' => [
+            'content_class' => 'w-full'
+        ]
+    ]
 ];

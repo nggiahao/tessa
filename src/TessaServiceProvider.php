@@ -4,6 +4,9 @@ namespace Nggiahao\Tessa;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Nggiahao\Tessa\app\Http\Controllers\Livewire\Dashboard as DashboardComponent;
+use Nggiahao\Tessa\app\Http\Controllers\Livewire\User as UserComponent;
 use Nggiahao\Tessa\app\Http\Middleware\Authenticate;
 
 class TessaServiceProvider extends ServiceProvider
@@ -21,6 +24,7 @@ class TessaServiceProvider extends ServiceProvider
     {
         $this->loadConfigs();
         $this->pushMiddleware();
+        $this->loadComponent();
         $this->setupRoutes();
         $this->publishFiles();
     }
@@ -121,6 +125,12 @@ class TessaServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views/base'), 'tessa');
         $this->loadViewsFrom(realpath(__DIR__.'/resources/views/crud'), 'crud');
+    }
+
+    public function loadComponent()
+    {
+        Livewire::component('user', UserComponent::class);
+        Livewire::component('dashboard', DashboardComponent::class);
     }
     /**
      * Get the services provided by the provider.

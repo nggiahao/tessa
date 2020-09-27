@@ -8,6 +8,7 @@
     @yield('before_styles')
     @stack('before_styles')
 
+    <livewire:styles />
     @if (config('tessa.base.styles') && count(config('tessa.base.styles')))
         @foreach (config('tessa.base.styles') as $path)
         <link rel="stylesheet" type="text/css" href="{{ asset($path)}}">

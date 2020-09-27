@@ -22,8 +22,11 @@ function () {
     ], function () {
         Route::post('logout', 'Auth\LoginController@logout')->name('tessa.auth.logout');
 
-        Route::get('/', 'AdminController@dashboard')->name('tessa');
-        Route::get('dashboard', 'AdminController@dashboard')->name('tessa.dashboard');
+        Route::view('/', tessa_view('layouts.blank'), ['module' => 'dashboard'])->name('tessa');
+        Route::view('dashboard', tessa_view('layouts.blank'), ['module' => 'dashboard'])->name('tessa.dashboard');
+
+        Route::view('user', tessa_view('layouts.blank'), ['module' => 'user', 'operation' => 'list'])->name('tessa.user');
+        Route::view('user/create', tessa_view('layouts.blank'), ['module' => 'user', 'operation' => 'create'])->name('tessa.user.create');
     });
 
 });
